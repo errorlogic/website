@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="icon.png">
+<style id="webmakerstyle">
+#wallpaper{
+  height:600px;
+  width:600px;
+  font-family: trebuchet ms;
+  background-image: url("https://png.pngtree.com/element_origin_min_pic/16/10/21/015808fda8363fd.jpg");
+    
+}
+#files{
+  background-color: lightblue;
+  height:400px;
+  width:300px;
+  border: 3px solid black;
+  margin-bottom: 50px;
+}
+button{
+  border: none;
+  height: 30px;
+  width: 200px;
+  font-weight: bold;
+  font-size: 20px;
+  
+}
+.win{
+  background-color: white;
+  height:400px;
+  width:300px;
+  border: 3px solid black;
+}
+#term{
+  background-color: black;
+  border: 3px solid white;
+  color: white;
+}
+#exe{
+  border: 2px solid black;
+  font-weight: normal;
+font-size: 12px;
+  width: 100px
+}
+}
+#output{
+  text-align: left;
+}
+#htmledit{
+    text-align: left;
+}
+</style>
+    <title>TarpOS</title>
+</head>
+<body>
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <center>
+      <br>
+      <div id="wallpaper">
+        <br>
+        <br>
+        <button onclick="closeWin()" id="close">
+          Close
+        </button>
+        <br>
+        <br>
+        <div class="win" id="textedit">
+          <br>
+          <p>
+            Weclome to the TarpOS Text Editor! Click save to save your text to TEXT.TXT
+          </p>
+          <input id="input">
+          <br>
+          <br>
+          <button onclick="saveText()">
+            Save
+          </button>
+        </div>
+        <div class="win" id="textread">
+        </div>
+        <div class="win" id="term">
+          <p>
+            Welcome To The TarpOS Terminal! type "help" for a list of commands.
+          </p>
+          <input id="cmdinput">
+          <button id="exe" onclick="exeCmd()">
+            Execute
+          </button>
+          <div id="output">
+            
+          </div>
+        </div>
+        <div class="win" id="credits">
+          <br>
+          Developed by Ozzie Hassel. <br> Thanks to all my classmates for their great ideas.
+        </div>
+        <div class="win" id="html">
+          Welcome to the TarpOS HTML editor. Type your HTML below and click save to save your code to HTML.HTML.
+        <p contenteditable id="htmledit">
+          </p>
+          <button onclick="htmlsave()">
+            Save
+          </button>
+        </div>
+        <div class="win" id="htmlread">
+          
+        </div>
+        <div id="files"> 
+          <img src="https://raw.githubusercontent.com/ozziehassel/TarpOS-2/master/tarplogo.png">
+
+          <br>
+          <br>
+          <button onclick="textEdit()">
+            TEXTEDIT.TWA
+          </button>
+          <p>
+          </p>
+          <button onclick="textRead()">
+            TEXT.TXT
+          </button>
+          <p>
+          </p>
+          <button onclick="cmdTerm()">
+            TERMINAL.TWA
+          </button>
+<p>
+          </p>
+          <button onclick="credits()">
+            CREDITS.TXT
+          </button>
+          <p>
+          </p>
+          <button onclick="html()">
+            HTML.TWA
+          </button>
+          <p>
+          </p>
+          <button onclick="htmlRead()">
+        HTML.HTML
+          </button>
+        </div>
+      </div>
+    </center>
+  </body>
+</html>
+
+<script>
+var htmltxt;
+var lighton;
+var txt;
+var cmd;
+htmltxt = null;
+window.onload = function(){
+  onLoad()
+}
+function textEdit(){
+  document.getElementById("files").style.display = "none";
+    document.getElementById("textedit").style.display = "block"
+  document.getElementById("close").style.display = "block";
+}
+function onLoad(){
+      document.getElementById("htmlread").style.display = "none";
+  document.getElementById("html").style.display = "none"
+document.getElementById("credits").style.display = "none"
+      document.getElementById("term").style.display = "none"
+  document.getElementById("textedit").style.display = "none"
+    document.getElementById("textread").style.display = "none"
+  document.getElementById("close").style.display = "none"
+}
+function saveText(){
+  txt = document.getElementById("input").value;
+  document.getElementById("textedit").style.display = "block"
+  document.getElementById("close").style.display = "block";
+        document.getElementById("term").style.display = "none"
+}
+function closeWin(){
+    document.getElementById("htmlread").style.display = "none";
+    document.getElementById("html").style.display = "none"
+  document.getElementById("credits").style.display = "none"
+  document.getElementById("textedit").style.display = "none"
+    document.getElementById("close").style.display = "none"
+    document.getElementById("files").style.display = "block"
+      document.getElementById("textread").style.display = "none"
+        document.getElementById("term").style.display = "none"
+}
+function textRead(){
+document.getElementById("files").style.display = "none";
+    document.getElementById("textread").style.display = "block"
+  document.getElementById("close").style.display = "block";
+      document.getElementById("textread").innerHTML = txt;
+        document.getElementById("term").style.display = "none"
+
+}
+function cmdTerm(){
+  document.getElementById("files").style.display = "none";
+    document.getElementById("term").style.display = "block"
+  document.getElementById("close").style.display = "block";
+          document.getElementById("output").innerHTML = ""
+}
+function exeCmd(){
+    cmd = document.getElementById("cmdinput").value;
+if(cmd == "help"){
+  document.getElementById("output").innerHTML = "-kill (shut down the OS)<br>-exit (leave the terminal)<br>You can also enter the name of a file or program to open it."
+}
+  else if(cmd == "html.twa"){
+    html()
+  }
+  else if(cmd == "html.html"){
+    htmlRead()
+  }
+  else if(cmd == "credits.txt"){
+    credits()
+  }
+  else if(cmd == "text.txt"){
+    textRead()
+  }
+  else if(cmd == "textedit.twa"){
+    textEdit()
+  }
+    else if(cmd == "kill"){
+      window.location.replace("about:blank")
+    }
+ else if(cmd == "exit"){
+      closeWin()
+    }
+  else if(cmd == "yikken"){
+    document.getElementById("output").innerHTML = "Yikken The Chikken!"
+  } 
+  else{
+   document.getElementById("output").innerHTML = "File or command not found!" 
+  }
+  }
+function credits(){
+    document.getElementById("files").style.display = "none";
+    document.getElementById("term").style.display = "none"
+  document.getElementById("credits").style.display = "block";
+    document.getElementById("close").style.display = "block";
+}
+function html(){
+  document.getElementById("files").style.display = "none";
+    document.getElementById("term").style.display = "none"
+  document.getElementById("html").style.display = "block";
+    document.getElementById("close").style.display = "block";
+}
+function htmlsave(){
+    htmltxt = document.getElementById("htmledit").textContent;
+}
+function htmlRead(){
+  document.getElementById("files").style.display = "none";
+    document.getElementById("term").style.display = "none"
+  document.getElementById("htmlread").style.display = "block";
+    document.getElementById("close").style.display = "block";
+      document.getElementById("htmlread").innerHTML = htmltxt;
+}
+//# sourceURL=userscript.js
+</script>
+</body>
+</html>
